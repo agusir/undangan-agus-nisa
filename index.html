@@ -134,57 +134,6 @@ h2.title.script{font-size:2.7rem;font-weight:600}
 .divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
 .divider svg{flex:none}
 
-/* =========================================================
-   ORNAMEN WAYANG & MEGA MENDUNG
-   ========================================================= */
-/* Wayang di sudut bawah bagian gelap — bergoyang pelan seperti
-   boneka yang dipegang dalang. */
-/* Pakai selector img.wayang (bukan .wayang saja) supaya tidak kalah oleh
-   aturan .pola > * / .truntum > * yang menetapkan position:relative. */
-img.wayang{
-  position:absolute;bottom:0;z-index:1;pointer-events:none;
-  width:clamp(96px,30vw,190px);height:auto;opacity:.9;
-  transform-origin:50% 100%;
-}
-img.wayang.kiri {left:-14px; animation:sway-l 6s ease-in-out infinite alternate}
-img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternate}
-@keyframes sway-l{from{transform:rotate(-2deg)}to{transform:rotate(1.6deg)}}
-@keyframes sway-r{from{transform:rotate(2deg)} to{transform:rotate(-1.6deg)}}
-@media (prefers-reduced-motion: reduce){
-  img.wayang{animation:none !important}
-}
-
-/* Emblem gunungan (kayon) */
-.kayon{display:block;margin:0 auto 6px;height:104px;width:auto}
-.kayon.sm{height:34px;margin:0}
-
-/* Pita mega mendung — peralihan bagian KREM ke bagian GELAP.
-   Dipakai sebagai latar (bukan <img>) supaya tingginya bisa diatur
-   sendiri; gambarnya diulang mendatar agar penuh di layar selebar apa pun. */
-.mendung{
-  display:block;width:100%;height:104px;margin-bottom:-1px;pointer-events:none;
-  background:url("foto/awan-mendung.webp") repeat-x center bottom / auto 100%;
-}
-@media (max-width:420px){ .mendung{height:82px} }
-
-/* Tekstur motif Jawa halus di bagian gelap */
-.pola{position:relative}
-.pola::after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:url("foto/pola-jawa.png") repeat;opacity:.10;
-}
-.pola > *{position:relative;z-index:1}
-
-/* =========================================================
-   PITA TRANSISI MEGA MENDUNG
-   Pemisah antar-bagian: renda manik bergelombang di atas,
-   gulungan awan mendung di bawahnya. Digambar SVG (tajam di
-   layar apa pun, ikut palet kita) dan diulang mendatar.
-   ========================================================= */
-#couple,#countdown-wrap,#event,#gallery-wrap,#gift,#wishes,#closing{background:var(--cream)}
-.ornawave{display:block;width:100%;height:62px;margin:0;pointer-events:none}
-@media (max-width:420px){ .ornawave{height:48px} }
-
 /* Ornamen pojok KAWUNG pada kartu */
 .kawung{position:relative}
 .kawung::before,.kawung::after{
@@ -259,7 +208,7 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
    HERO
    ========================================================= */
 #hero{
-  position:relative;color:var(--cream);padding:96px 26px 132px;
+  position:relative;color:var(--cream);padding:96px 26px 84px;
   background:#233246;overflow:hidden;
 }
 #hero .bg{
@@ -296,6 +245,7 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
 /* =========================================================
    COUNTDOWN
    ========================================================= */
+#countdown-wrap{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
 .count{display:flex;justify-content:center;gap:12px;margin-top:26px}
 .count .box{
   background:var(--blue-800);color:var(--cream);border-radius:14px;min-width:70px;
@@ -422,8 +372,7 @@ form.wish input:focus,form.wish select:focus,form.wish textarea:focus{
 }
 .closing-photo img{width:100%;height:100%;object-fit:cover;display:block}
 footer{
-  background:var(--blue-950);color:#D5C7AF;text-align:center;padding:56px 26px 118px;
-  position:relative;overflow:hidden;
+  background:var(--blue-950);color:#D5C7AF;text-align:center;padding:56px 26px 100px;position:relative;
 }
 footer .names{font-size:2.5rem;color:var(--gold-l)}
 
@@ -464,59 +413,6 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
   .nav-item{padding:4px 4px;font-size:.54rem;letter-spacing:.02em}
   .nav-item svg{width:18px;height:18px}
 }
-
-/* =========================================================
-   TEMA GELAP — latar navy jadi warna utama halaman
-   Alasan: ornamen krem-emas baru "menyala" di atas latar gelap.
-   Warna tetap milik kita sendiri (navy & emas dari baju di foto).
-   Blok ini sengaja ditaruh paling bawah supaya menimpa aturan di atasnya.
-   ========================================================= */
-body{background:var(--blue-950)}
-.page{background:var(--blue-900);box-shadow:0 0 60px rgba(0,0,0,.5)}
-#couple,#countdown-wrap,#event,#gallery-wrap,#gift,#wishes,#closing{background:transparent}
-body,.page{color:#E4DCCC}
-
-h2.title{color:var(--gold-l)}
-.subtitle{color:var(--blue-300)}
-.divider{color:var(--gold)}
-
-/* Mempelai */
-.person .name{color:var(--gold-l)}
-.person .parents{color:#B9C6D6}
-.amp{color:var(--gold-l)}
-
-/* Hitung mundur */
-.count .box{background:var(--blue-800);border-color:rgba(217,187,140,.35)}
-.count .num{color:var(--gold-l)}
-.count .lbl{color:#CFC4B2}
-
-/* Kartu acara */
-.event-card{background:var(--blue-800);border-color:rgba(217,187,140,.32)}
-.event-card h3{color:var(--gold-l)}
-.event-card .when{color:#EFE7D8}
-.event-card .place{color:var(--gold-l)}
-.event-card .where{color:#B9C6D6}
-.event-card .bigdate .side{color:#AFC0D2}
-.event-card .bigdate .bar{background:rgba(217,187,140,.45)}
-
-/* Rekening */
-.bank{background:linear-gradient(135deg,var(--blue-800),var(--blue-950))}
-
-/* Ucapan */
-form.wish input,form.wish select,form.wish textarea{
-  background:var(--blue-800);border-color:rgba(217,187,140,.3);color:#EFE7D8;
-}
-form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
-.wish-item{background:var(--blue-800);border-color:rgba(217,187,140,.22)}
-.wish-item .who{color:var(--gold-l)}
-.wish-item .badge{background:rgba(217,187,140,.12);color:#D9BB8C;border-color:rgba(217,187,140,.4)}
-.wish-item .when{color:#8E9CAD}
-
-/* Galeri & foto */
-.gallery button{background:var(--blue-800)}
-
-/* Motif truntum lebih terlihat di atas navy */
-.truntum::before{opacity:.13}
 </style>
 </head>
 <body>
@@ -539,41 +435,13 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
   </div>
 </div>
 
-<!-- Motif pita mendung — didefinisikan sekali, dipakai ulang semua pemisah -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <pattern id="mendung-pat" patternUnits="userSpaceOnUse" width="96" height="62">
-      <rect width="96" height="62" fill="#233246"/>
-      <path d="M0 0 H96 V30 Q72 52 48 30 T0 30 Z" fill="#F1E9DC"/>
-      <!-- gulungan awan -->
-      <path d="M0 62 V50 q7-11 17-6 q4-13 17-9 q9-9 19 1 q11-5 16 7 q8-3 13 8 q6-2 14 5 V62 Z"
-            fill="#33465E" opacity=".95"/>
-      <path d="M0 62 V56 q10-8 19-3 q6-10 18-5 q10-7 18 3 q10-4 15 8 q9-2 14 7 V62 Z"
-            fill="#3E5570" opacity=".85"/>
-      <!-- pusaran khas mega mendung -->
-      <path d="M22 55 a5 5 0 1 1 5-5" fill="none" stroke="#54708F" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M64 57 a4.5 4.5 0 1 1 4.5-4.5" fill="none" stroke="#54708F" stroke-width="1.6" stroke-linecap="round"/>
-      <!-- garis gelombang -->
-      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#B08954" stroke-width="1.3" opacity=".8"/>
-      <!-- renda manik mengikuti gelombang -->
-      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#C9A96A"
-            stroke-width="3.4" stroke-linecap="round" stroke-dasharray="0.1 8"/>
-      <!-- rumbai pendek -->
-      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#D9BB8C"
-            stroke-width="12" stroke-linecap="butt" stroke-dasharray="0.8 7" opacity=".45"/>
-    </pattern>
-  </defs>
-</svg>
-
 <div class="page">
 
   <!-- ================= HERO ================= -->
-  <section id="hero" class="center truntum on-dark pola">
+  <section id="hero" class="center truntum on-dark">
     <div class="bg"></div>
     <div class="veil"></div>
     <div class="wrap">
-      <img class="kayon" src="foto/gunungan-krem.webp" alt="" aria-hidden="true"
-           width="152" height="266" decoding="async">
       <div class="bismillah script reveal">Bismillahirrahmanirrahim</div>
       <p class="reveal" style="max-width:380px;margin:16px auto 0;color:#EADFCB">
         Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan
@@ -587,14 +455,18 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
         <b>QS. AR-RUM : 21</b>
       </div>
     </div>
-    <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
-    <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
   </section>
+
+  <!-- lengkung transisi dari hero gelap ke bagian terang -->
+  <svg class="curve" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"
+       style="background:#233246">
+    <path d="M0,44 C240,6 520,0 720,14 C940,29 1200,40 1440,20 L1440,44 Z" fill="#FAF6EF"/>
+  </svg>
 
   <!-- ================= MEMPELAI ================= -->
   <section id="couple" class="truntum">
     <h2 class="title script reveal">Assalamu'alaikum Wr. Wb.</h2>
-    <p class="center reveal intro" style="max-width:400px;margin:0 auto">
+    <p class="center reveal" style="max-width:400px;margin:0 auto">
       Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir
       di acara pernikahan kami:
     </p>
@@ -608,12 +480,12 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     <div class="couple">
       <div class="person reveal">
         <div class="photo gebyok">
-            <picture>
-              <source srcset="foto/pria.webp" type="image/webp">
-              <img src="foto/pria.jpg" alt="Agus Irawan" loading="lazy" decoding="async" width="800" height="1200">
-            </picture>
-            <span class="gebyok-outline"></span>
-          </div>
+          <picture>
+            <source srcset="foto/pria.webp" type="image/webp">
+            <img src="foto/pria.jpg" alt="Agus Irawan" loading="lazy" decoding="async" width="800" height="1200">
+          </picture>
+          <span class="gebyok-outline"></span>
+        </div>
         <div class="name script">Agus Irawan</div>
         <div class="parents">Putra dari<br>Bapak Seniran &amp; Ibu Sumini</div>
       </div>
@@ -622,21 +494,17 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
 
       <div class="person reveal">
         <div class="photo gebyok">
-            <picture>
-              <source srcset="foto/wanita.webp" type="image/webp">
-              <img src="foto/wanita.jpg" alt="Indah Khoirun Nisa'" loading="lazy" decoding="async" width="800" height="1200">
-            </picture>
-            <span class="gebyok-outline"></span>
-          </div>
+          <picture>
+            <source srcset="foto/wanita.webp" type="image/webp">
+            <img src="foto/wanita.jpg" alt="Indah Khoirun Nisa'" loading="lazy" decoding="async" width="800" height="1200">
+          </picture>
+          <span class="gebyok-outline"></span>
+        </div>
         <div class="name script">Indah Khoirun Nisa'</div>
         <div class="parents">Putri dari<br>Bapak Kemin &amp; Ibu Siti Umaiyah</div>
       </div>
     </div>
   </section>
-
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
 
   <!-- ================= COUNTDOWN ================= -->
   <section id="countdown-wrap" class="center">
@@ -655,10 +523,6 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
       </a>
     </div>
   </section>
-
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
 
   <!-- ================= ACARA (urut kronologis) ================= -->
   <section id="event" class="truntum">
@@ -698,10 +562,6 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     </div>
   </section>
 
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
-
   <!-- ================= GALERI ================= -->
   <section id="gallery-wrap">
     <div class="subtitle reveal">Momen Bahagia</div>
@@ -734,10 +594,6 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     </div>
   </section>
 
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
-
   <!-- ================= HADIAH ================= -->
   <section id="gift" class="truntum">
     <div class="subtitle reveal">Tanda Kasih</div>
@@ -762,12 +618,8 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     </div>
   </section>
 
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
-
   <!-- ================= UCAPAN ================= -->
-  <section id="wishes">
+  <section id="wishes" style="background:var(--cream-2)">
     <div class="subtitle reveal">Kirim Doa</div>
     <h2 class="title script reveal">Ucapan &amp; Doa Restu</h2>
     <form class="wish reveal" id="wishForm">
@@ -784,12 +636,8 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     <div id="wishList"></div>
   </section>
 
-  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <rect width="960" height="62" fill="url(#mendung-pat)"/>
-  </svg>
-
   <!-- ================= PENUTUP ================= -->
-  <section id="closing" class="center truntum">
+  <section class="center truntum">
     <div class="closing-photo gebyok reveal">
       <picture>
         <source srcset="foto/penutup.webp" type="image/webp">
@@ -811,8 +659,7 @@ form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
     <div class="reveal script" style="font-size:2.4rem;color:var(--blue-800)">Agus &amp; Nisa</div>
   </section>
 
-  <div class="mendung" aria-hidden="true"></div>
-  <footer class="truntum on-dark pola">
+  <footer class="truntum on-dark">
     <div class="script names">Agus &amp; Nisa</div>
     <div style="letter-spacing:.3em;font-size:.75rem;margin-top:8px">11 · 09 · 2026</div>
     <div style="margin-top:26px;font-size:.8rem;opacity:.7">Made with ♥ — Undangan Digital</div>
