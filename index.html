@@ -293,6 +293,8 @@ h2.title.script{font-size:2.7rem;font-weight:600}
   box-shadow:0 6px 18px rgba(27,38,53,.18);transition:transform .25s ease;
 }
 .gallery button:hover{transform:scale(1.02)}
+/* jumlah foto ganjil → yang terakhir melebar penuh biar barisnya tidak pincang */
+.gallery button:last-child{grid-column:1/-1;aspect-ratio:4/3}
 .gallery img{width:100%;height:100%;object-fit:cover;display:block}
 
 #lightbox{
@@ -397,19 +399,22 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
   display:none;gap:2px;align-items:center;
   background:linear-gradient(135deg,var(--blue-800),var(--blue-950));
   border:1px solid rgba(217,187,140,.45);border-radius:999px;
-  padding:8px 12px;box-shadow:0 10px 30px rgba(0,0,0,.4);
-  max-width:calc(100% - 24px);
+  padding:8px 6px;box-shadow:0 10px 30px rgba(0,0,0,.4);
+  width:calc(100% - 20px);max-width:460px;justify-content:space-between;
 }
 #bottomNav.visible{display:flex}
 .nav-item{
   display:flex;flex-direction:column;align-items:center;gap:2px;
-  text-decoration:none;padding:4px 10px;border-radius:14px;
+  text-decoration:none;padding:4px 7px;border-radius:14px;flex:1 1 0;min-width:0;
   font-size:.58rem;letter-spacing:.05em;font-weight:500;white-space:nowrap;
   color:#BFA980;transition:color .25s ease;
 }
 .nav-item svg{width:20px;height:20px}
 .nav-item.active{color:var(--gold-l);background:rgba(217,187,140,.16)}
-@media (max-width:360px){ .nav-item{padding:4px 7px} }
+@media (max-width:380px){
+  .nav-item{padding:4px 4px;font-size:.54rem;letter-spacing:.02em}
+  .nav-item svg{width:18px;height:18px}
+}
 </style>
 </head>
 <body>
@@ -579,6 +584,18 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       <button type="button" aria-label="Perbesar foto 4">
         <picture><source srcset="foto/galeri-4.webp" type="image/webp">
         <img src="foto/galeri-4.jpg" alt="Prewedding Agus &amp; Nisa 4" loading="lazy" decoding="async" width="667" height="1000"></picture>
+      </button>
+      <button type="button" aria-label="Perbesar foto 5">
+        <picture><source srcset="foto/galeri-5.webp" type="image/webp">
+        <img src="foto/galeri-5.jpg" alt="Prewedding Agus &amp; Nisa 5" loading="lazy" decoding="async" width="667" height="1000"></picture>
+      </button>
+      <button type="button" aria-label="Perbesar foto 6">
+        <picture><source srcset="foto/galeri-6.webp" type="image/webp">
+        <img src="foto/galeri-6.jpg" alt="Prewedding Agus &amp; Nisa 6" loading="lazy" decoding="async" width="667" height="1000"></picture>
+      </button>
+      <button type="button" aria-label="Perbesar foto 7">
+        <picture><source srcset="foto/galeri-7.webp" type="image/webp">
+        <img src="foto/galeri-7.jpg" alt="Prewedding Agus &amp; Nisa 7" loading="lazy" decoding="async" width="667" height="1000"></picture>
       </button>
     </div>
   </section>
