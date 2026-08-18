@@ -154,12 +154,36 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
   img.wayang{animation:none !important}
 }
 
+/* Bagian MEMPELAI berlatar gelap (mengikuti gaya undangan Jawa:
+   bagian terang & gelap berselang-seling, dipisah ornamen). */
+#couple{background:var(--blue-900);color:var(--cream);overflow:hidden}
+#couple h2.title{color:var(--gold-l)}
+#couple .intro{color:#EADFCB}
+#couple .person .name{color:var(--gold-l)}
+#couple .person .parents{color:#BCC8D8}
+#couple .amp{color:var(--gold-l)}
+#couple .divider{color:var(--gold)}
+
+/* Sayap gunungan mengapit foto mempelai */
+.photo-row{display:flex;align-items:center;justify-content:center;gap:2px}
+.photo-row .wing{
+  width:clamp(42px,13vw,76px);height:auto;opacity:.9;flex:none;
+  filter:drop-shadow(0 4px 14px rgba(0,0,0,.35));
+}
+.photo-row .wing.kanan{transform:scaleX(-1)}
+
 /* Emblem gunungan (kayon) */
 .kayon{display:block;margin:0 auto 6px;height:104px;width:auto}
 .kayon.sm{height:34px;margin:0}
 
-/* Pita mega mendung — peralihan bagian krem ke bagian gelap */
-.mendung{display:block;width:100%;height:auto;margin-bottom:-2px;pointer-events:none}
+/* Pita mega mendung — peralihan bagian KREM ke bagian GELAP.
+   Dipakai sebagai latar (bukan <img>) supaya tingginya bisa diatur
+   sendiri; gambarnya diulang mendatar agar penuh di layar selebar apa pun. */
+.mendung{
+  display:block;width:100%;height:104px;margin-bottom:-1px;pointer-events:none;
+  background:url("foto/awan-mendung.webp") repeat-x center bottom / auto 100%;
+}
+@media (max-width:420px){ .mendung{height:82px} }
 
 /* Tekstur motif Jawa halus di bagian gelap */
 .pola{position:relative}
@@ -497,32 +521,30 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
   </section>
 
-  <!-- lengkung transisi dari hero gelap ke bagian terang -->
-  <svg class="curve" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"
-       style="background:#233246">
-    <path d="M0,44 C240,6 520,0 720,14 C940,29 1200,40 1440,20 L1440,44 Z" fill="#FAF6EF"/>
-  </svg>
-
   <!-- ================= MEMPELAI ================= -->
-  <section id="couple" class="truntum">
+  <section id="couple" class="truntum on-dark pola">
     <h2 class="title script reveal">Assalamu'alaikum Wr. Wb.</h2>
-    <p class="center reveal" style="max-width:400px;margin:0 auto">
+    <p class="center reveal intro" style="max-width:400px;margin:0 auto">
       Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir
       di acara pernikahan kami:
     </p>
     <div class="divider">
       <!-- sulur / lung-lungan -->
-      <img class="kayon sm" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
+      <img class="kayon sm" src="foto/gunungan-krem.webp" alt="" aria-hidden="true" decoding="async">
     </div>
 
     <div class="couple">
       <div class="person reveal">
-        <div class="photo gebyok">
-          <picture>
-            <source srcset="foto/pria.webp" type="image/webp">
-            <img src="foto/pria.jpg" alt="Agus Irawan" loading="lazy" decoding="async" width="800" height="1200">
-          </picture>
-          <span class="gebyok-outline"></span>
+        <div class="photo-row">
+          <img class="wing kiri" src="foto/gunungan-krem.webp" alt="" aria-hidden="true" decoding="async">
+          <div class="photo gebyok">
+            <picture>
+              <source srcset="foto/pria.webp" type="image/webp">
+              <img src="foto/pria.jpg" alt="Agus Irawan" loading="lazy" decoding="async" width="800" height="1200">
+            </picture>
+            <span class="gebyok-outline"></span>
+          </div>
+          <img class="wing kanan" src="foto/gunungan-krem.webp" alt="" aria-hidden="true" decoding="async">
         </div>
         <div class="name script">Agus Irawan</div>
         <div class="parents">Putra dari<br>Bapak Seniran &amp; Ibu Sumini</div>
@@ -531,18 +553,30 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       <div class="amp script reveal">&amp;</div>
 
       <div class="person reveal">
-        <div class="photo gebyok">
-          <picture>
-            <source srcset="foto/wanita.webp" type="image/webp">
-            <img src="foto/wanita.jpg" alt="Indah Khoirun Nisa'" loading="lazy" decoding="async" width="800" height="1200">
-          </picture>
-          <span class="gebyok-outline"></span>
+        <div class="photo-row">
+          <img class="wing kiri" src="foto/gunungan-krem.webp" alt="" aria-hidden="true" decoding="async">
+          <div class="photo gebyok">
+            <picture>
+              <source srcset="foto/wanita.webp" type="image/webp">
+              <img src="foto/wanita.jpg" alt="Indah Khoirun Nisa'" loading="lazy" decoding="async" width="800" height="1200">
+            </picture>
+            <span class="gebyok-outline"></span>
+          </div>
+          <img class="wing kanan" src="foto/gunungan-krem.webp" alt="" aria-hidden="true" decoding="async">
         </div>
         <div class="name script">Indah Khoirun Nisa'</div>
         <div class="parents">Putri dari<br>Bapak Kemin &amp; Ibu Siti Umaiyah</div>
       </div>
     </div>
+    <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
+    <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
   </section>
+
+  <!-- lengkung transisi dari bagian gelap ke bagian terang -->
+  <svg class="curve" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"
+       style="background:#233246">
+    <path d="M0,44 C240,6 520,0 720,14 C940,29 1200,40 1440,20 L1440,44 Z" fill="#FAF6EF"/>
+  </svg>
 
   <!-- ================= COUNTDOWN ================= -->
   <section id="countdown-wrap" class="center">
@@ -695,7 +729,7 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <div class="reveal script" style="font-size:2.4rem;color:var(--blue-800)">Agus &amp; Nisa</div>
   </section>
 
-  <img class="mendung" src="foto/awan-mendung.webp" alt="" aria-hidden="true" decoding="async">
+  <div class="mendung" aria-hidden="true"></div>
   <footer class="truntum on-dark pola">
     <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
     <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
