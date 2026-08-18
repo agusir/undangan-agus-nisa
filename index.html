@@ -464,6 +464,59 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
   .nav-item{padding:4px 4px;font-size:.54rem;letter-spacing:.02em}
   .nav-item svg{width:18px;height:18px}
 }
+
+/* =========================================================
+   TEMA GELAP — latar navy jadi warna utama halaman
+   Alasan: ornamen krem-emas baru "menyala" di atas latar gelap.
+   Warna tetap milik kita sendiri (navy & emas dari baju di foto).
+   Blok ini sengaja ditaruh paling bawah supaya menimpa aturan di atasnya.
+   ========================================================= */
+body{background:var(--blue-950)}
+.page{background:var(--blue-900);box-shadow:0 0 60px rgba(0,0,0,.5)}
+#couple,#countdown-wrap,#event,#gallery-wrap,#gift,#wishes,#closing{background:transparent}
+body,.page{color:#E4DCCC}
+
+h2.title{color:var(--gold-l)}
+.subtitle{color:var(--blue-300)}
+.divider{color:var(--gold)}
+
+/* Mempelai */
+.person .name{color:var(--gold-l)}
+.person .parents{color:#B9C6D6}
+.amp{color:var(--gold-l)}
+
+/* Hitung mundur */
+.count .box{background:var(--blue-800);border-color:rgba(217,187,140,.35)}
+.count .num{color:var(--gold-l)}
+.count .lbl{color:#CFC4B2}
+
+/* Kartu acara */
+.event-card{background:var(--blue-800);border-color:rgba(217,187,140,.32)}
+.event-card h3{color:var(--gold-l)}
+.event-card .when{color:#EFE7D8}
+.event-card .place{color:var(--gold-l)}
+.event-card .where{color:#B9C6D6}
+.event-card .bigdate .side{color:#AFC0D2}
+.event-card .bigdate .bar{background:rgba(217,187,140,.45)}
+
+/* Rekening */
+.bank{background:linear-gradient(135deg,var(--blue-800),var(--blue-950))}
+
+/* Ucapan */
+form.wish input,form.wish select,form.wish textarea{
+  background:var(--blue-800);border-color:rgba(217,187,140,.3);color:#EFE7D8;
+}
+form.wish input::placeholder,form.wish textarea::placeholder{color:#93A3B6}
+.wish-item{background:var(--blue-800);border-color:rgba(217,187,140,.22)}
+.wish-item .who{color:var(--gold-l)}
+.wish-item .badge{background:rgba(217,187,140,.12);color:#D9BB8C;border-color:rgba(217,187,140,.4)}
+.wish-item .when{color:#8E9CAD}
+
+/* Galeri & foto */
+.gallery button{background:var(--blue-800)}
+
+/* Motif truntum lebih terlihat di atas navy */
+.truntum::before{opacity:.13}
 </style>
 </head>
 <body>
@@ -490,14 +543,16 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <pattern id="mendung-pat" patternUnits="userSpaceOnUse" width="96" height="62">
+      <rect width="96" height="62" fill="#233246"/>
+      <path d="M0 0 H96 V30 Q72 52 48 30 T0 30 Z" fill="#F1E9DC"/>
       <!-- gulungan awan -->
       <path d="M0 62 V50 q7-11 17-6 q4-13 17-9 q9-9 19 1 q11-5 16 7 q8-3 13 8 q6-2 14 5 V62 Z"
-            fill="#E7DCC6" opacity=".85"/>
+            fill="#33465E" opacity=".95"/>
       <path d="M0 62 V56 q10-8 19-3 q6-10 18-5 q10-7 18 3 q10-4 15 8 q9-2 14 7 V62 Z"
-            fill="#DCCFB4" opacity=".7"/>
+            fill="#3E5570" opacity=".85"/>
       <!-- pusaran khas mega mendung -->
-      <path d="M22 55 a5 5 0 1 1 5-5" fill="none" stroke="#CBBB99" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M64 57 a4.5 4.5 0 1 1 4.5-4.5" fill="none" stroke="#CBBB99" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M22 55 a5 5 0 1 1 5-5" fill="none" stroke="#54708F" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M64 57 a4.5 4.5 0 1 1 4.5-4.5" fill="none" stroke="#54708F" stroke-width="1.6" stroke-linecap="round"/>
       <!-- garis gelombang -->
       <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#B08954" stroke-width="1.3" opacity=".8"/>
       <!-- renda manik mengikuti gelombang -->
@@ -535,12 +590,6 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
     <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
   </section>
-
-  <!-- lengkung transisi dari bagian gelap ke bagian terang -->
-  <svg class="curve" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"
-       style="background:#233246">
-    <path d="M0,44 C240,6 520,0 720,14 C940,29 1200,40 1440,20 L1440,44 Z" fill="#FAF6EF"/>
-  </svg>
 
   <!-- ================= MEMPELAI ================= -->
   <section id="couple" class="truntum">
