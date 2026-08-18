@@ -176,20 +176,14 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
 .pola > *{position:relative;z-index:1}
 
 /* =========================================================
-   TRANSISI ANTAR-BAGIAN
-   Latar bagian dibuat berselang-seling krem muda / krem tua,
-   lalu tiap pergantian diberi gelombang halus supaya sambungannya
-   mengalir, bukan garis lurus yang kaku.
+   PITA TRANSISI MEGA MENDUNG
+   Pemisah antar-bagian: renda manik bergelombang di atas,
+   gulungan awan mendung di bawahnya. Digambar SVG (tajam di
+   layar apa pun, ikut palet kita) dan diulang mendatar.
    ========================================================= */
-#couple        {background:var(--cream)}
-#countdown-wrap{background:var(--cream-2)}
-#event         {background:var(--cream)}
-#gallery-wrap  {background:var(--cream-2)}
-#gift          {background:var(--cream)}
-#wishes        {background:var(--cream-2)}
-#closing       {background:var(--cream)}
-.wave{display:block;width:100%;height:32px;margin:0;pointer-events:none}
-@media (max-width:420px){ .wave{height:24px} }
+#couple,#countdown-wrap,#event,#gallery-wrap,#gift,#wishes,#closing{background:var(--cream)}
+.ornawave{display:block;width:100%;height:62px;margin:0;pointer-events:none}
+@media (max-width:420px){ .ornawave{height:48px} }
 
 /* Ornamen pojok KAWUNG pada kartu */
 .kawung{position:relative}
@@ -492,6 +486,30 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
   </div>
 </div>
 
+<!-- Motif pita mendung — didefinisikan sekali, dipakai ulang semua pemisah -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="mendung-pat" patternUnits="userSpaceOnUse" width="96" height="62">
+      <!-- gulungan awan -->
+      <path d="M0 62 V50 q7-11 17-6 q4-13 17-9 q9-9 19 1 q11-5 16 7 q8-3 13 8 q6-2 14 5 V62 Z"
+            fill="#E7DCC6" opacity=".85"/>
+      <path d="M0 62 V56 q10-8 19-3 q6-10 18-5 q10-7 18 3 q10-4 15 8 q9-2 14 7 V62 Z"
+            fill="#DCCFB4" opacity=".7"/>
+      <!-- pusaran khas mega mendung -->
+      <path d="M22 55 a5 5 0 1 1 5-5" fill="none" stroke="#CBBB99" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M64 57 a4.5 4.5 0 1 1 4.5-4.5" fill="none" stroke="#CBBB99" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- garis gelombang -->
+      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#B08954" stroke-width="1.3" opacity=".8"/>
+      <!-- renda manik mengikuti gelombang -->
+      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#C9A96A"
+            stroke-width="3.4" stroke-linecap="round" stroke-dasharray="0.1 8"/>
+      <!-- rumbai pendek -->
+      <path d="M0 30 Q24 8 48 30 T96 30" fill="none" stroke="#D9BB8C"
+            stroke-width="12" stroke-linecap="butt" stroke-dasharray="0.8 7" opacity=".45"/>
+    </pattern>
+  </defs>
+</svg>
+
 <div class="page">
 
   <!-- ================= HERO ================= -->
@@ -567,8 +585,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= COUNTDOWN ================= -->
@@ -589,8 +607,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= ACARA (urut kronologis) ================= -->
@@ -631,8 +649,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= GALERI ================= -->
@@ -667,8 +685,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= HADIAH ================= -->
@@ -695,8 +713,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= UCAPAN ================= -->
@@ -717,8 +735,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <div id="wishList"></div>
   </section>
 
-  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
-    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  <svg class="ornawave" viewBox="0 0 960 62" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="960" height="62" fill="url(#mendung-pat)"/>
   </svg>
 
   <!-- ================= PENUTUP ================= -->
