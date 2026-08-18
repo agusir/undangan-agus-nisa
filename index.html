@@ -134,6 +134,41 @@ h2.title.script{font-size:2.7rem;font-weight:600}
 .divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
 .divider svg{flex:none}
 
+/* =========================================================
+   ORNAMEN WAYANG & MEGA MENDUNG
+   ========================================================= */
+/* Wayang di sudut bawah bagian gelap — bergoyang pelan seperti
+   boneka yang dipegang dalang. */
+/* Pakai selector img.wayang (bukan .wayang saja) supaya tidak kalah oleh
+   aturan .pola > * / .truntum > * yang menetapkan position:relative. */
+img.wayang{
+  position:absolute;bottom:0;z-index:1;pointer-events:none;
+  width:clamp(96px,30vw,190px);height:auto;opacity:.9;
+  transform-origin:50% 100%;
+}
+img.wayang.kiri {left:-14px; animation:sway-l 6s ease-in-out infinite alternate}
+img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternate}
+@keyframes sway-l{from{transform:rotate(-2deg)}to{transform:rotate(1.6deg)}}
+@keyframes sway-r{from{transform:rotate(2deg)} to{transform:rotate(-1.6deg)}}
+@media (prefers-reduced-motion: reduce){
+  img.wayang{animation:none !important}
+}
+
+/* Emblem gunungan (kayon) */
+.kayon{display:block;margin:0 auto 6px;height:104px;width:auto}
+.kayon.sm{height:34px;margin:0}
+
+/* Pita mega mendung — peralihan bagian krem ke bagian gelap */
+.mendung{display:block;width:100%;height:auto;margin-bottom:-2px;pointer-events:none}
+
+/* Tekstur motif Jawa halus di bagian gelap */
+.pola{position:relative}
+.pola::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("foto/pola-jawa.png") repeat;opacity:.10;
+}
+.pola > *{position:relative;z-index:1}
+
 /* Ornamen pojok KAWUNG pada kartu */
 .kawung{position:relative}
 .kawung::before,.kawung::after{
@@ -208,7 +243,7 @@ h2.title.script{font-size:2.7rem;font-weight:600}
    HERO
    ========================================================= */
 #hero{
-  position:relative;color:var(--cream);padding:96px 26px 84px;
+  position:relative;color:var(--cream);padding:96px 26px 132px;
   background:#233246;overflow:hidden;
 }
 #hero .bg{
@@ -372,7 +407,8 @@ form.wish input:focus,form.wish select:focus,form.wish textarea:focus{
 }
 .closing-photo img{width:100%;height:100%;object-fit:cover;display:block}
 footer{
-  background:var(--blue-950);color:#D5C7AF;text-align:center;padding:56px 26px 100px;position:relative;
+  background:var(--blue-950);color:#D5C7AF;text-align:center;padding:56px 26px 118px;
+  position:relative;overflow:hidden;
 }
 footer .names{font-size:2.5rem;color:var(--gold-l)}
 
@@ -438,10 +474,12 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
 <div class="page">
 
   <!-- ================= HERO ================= -->
-  <section id="hero" class="center truntum on-dark">
+  <section id="hero" class="center truntum on-dark pola">
     <div class="bg"></div>
     <div class="veil"></div>
     <div class="wrap">
+      <img class="kayon" src="foto/gunungan-krem.webp" alt="" aria-hidden="true"
+           width="152" height="266" decoding="async">
       <div class="bismillah script reveal">Bismillahirrahmanirrahim</div>
       <p class="reveal" style="max-width:380px;margin:16px auto 0;color:#EADFCB">
         Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan
@@ -455,6 +493,8 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
         <b>QS. AR-RUM : 21</b>
       </div>
     </div>
+    <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
+    <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
   </section>
 
   <!-- lengkung transisi dari hero gelap ke bagian terang -->
@@ -472,9 +512,7 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </p>
     <div class="divider">
       <!-- sulur / lung-lungan -->
-      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M15 17c0-5 3-8 7-9-4-1-7 1-7 4 0-3-3-5-7-4 4 1 7 4 7 9z"/><path d="M15 17v-9"/>
-      </svg>
+      <img class="kayon sm" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
     </div>
 
     <div class="couple">
@@ -650,16 +688,17 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
     </p>
     <div class="divider">
-      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M15 17c0-5 3-8 7-9-4-1-7 1-7 4 0-3-3-5-7-4 4 1 7 4 7 9z"/><path d="M15 17v-9"/>
-      </svg>
+      <img class="kayon sm" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
     </div>
     <h2 class="title script reveal" style="margin-bottom:0">Wassalamu'alaikum Wr. Wb.</h2>
     <p class="reveal" style="color:var(--blue-500)">Kami yang berbahagia,</p>
     <div class="reveal script" style="font-size:2.4rem;color:var(--blue-800)">Agus &amp; Nisa</div>
   </section>
 
-  <footer class="truntum on-dark">
+  <img class="mendung" src="foto/awan-mendung.webp" alt="" aria-hidden="true" decoding="async">
+  <footer class="truntum on-dark pola">
+    <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
+    <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
     <div class="script names">Agus &amp; Nisa</div>
     <div style="letter-spacing:.3em;font-size:.75rem;margin-top:8px">11 · 09 · 2026</div>
     <div style="margin-top:26px;font-size:.8rem;opacity:.7">Made with ♥ — Undangan Digital</div>
