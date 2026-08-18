@@ -154,14 +154,6 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
   img.wayang{animation:none !important}
 }
 
-/* Sayap gunungan mengapit foto mempelai */
-.photo-row{display:flex;align-items:center;justify-content:center;gap:2px}
-.photo-row .wing{
-  width:clamp(42px,13vw,76px);height:auto;opacity:.9;flex:none;
-  filter:drop-shadow(0 4px 14px rgba(0,0,0,.35));
-}
-.photo-row .wing.kanan{transform:scaleX(-1)}
-
 /* Emblem gunungan (kayon) */
 .kayon{display:block;margin:0 auto 6px;height:104px;width:auto}
 .kayon.sm{height:34px;margin:0}
@@ -182,6 +174,22 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
   background:url("foto/pola-jawa.png") repeat;opacity:.10;
 }
 .pola > *{position:relative;z-index:1}
+
+/* =========================================================
+   TRANSISI ANTAR-BAGIAN
+   Latar bagian dibuat berselang-seling krem muda / krem tua,
+   lalu tiap pergantian diberi gelombang halus supaya sambungannya
+   mengalir, bukan garis lurus yang kaku.
+   ========================================================= */
+#couple        {background:var(--cream)}
+#countdown-wrap{background:var(--cream-2)}
+#event         {background:var(--cream)}
+#gallery-wrap  {background:var(--cream-2)}
+#gift          {background:var(--cream)}
+#wishes        {background:var(--cream-2)}
+#closing       {background:var(--cream)}
+.wave{display:block;width:100%;height:32px;margin:0;pointer-events:none}
+@media (max-width:420px){ .wave{height:24px} }
 
 /* Ornamen pojok KAWUNG pada kartu */
 .kawung{position:relative}
@@ -294,7 +302,6 @@ img.wayang.kanan{right:-14px;animation:sway-r 6.8s ease-in-out infinite alternat
 /* =========================================================
    COUNTDOWN
    ========================================================= */
-#countdown-wrap{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
 .count{display:flex;justify-content:center;gap:12px;margin-top:26px}
 .count .box{
   background:var(--blue-800);color:var(--cream);border-radius:14px;min-width:70px;
@@ -526,22 +533,20 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </p>
     <div class="divider">
       <!-- sulur / lung-lungan -->
-      <img class="kayon sm" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
+      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M15 17c0-5 3-8 7-9-4-1-7 1-7 4 0-3-3-5-7-4 4 1 7 4 7 9z"/><path d="M15 17v-9"/>
+      </svg>
     </div>
 
     <div class="couple">
       <div class="person reveal">
-        <div class="photo-row">
-          <img class="wing kiri" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
-          <div class="photo gebyok">
+        <div class="photo gebyok">
             <picture>
               <source srcset="foto/pria.webp" type="image/webp">
               <img src="foto/pria.jpg" alt="Agus Irawan" loading="lazy" decoding="async" width="800" height="1200">
             </picture>
             <span class="gebyok-outline"></span>
           </div>
-          <img class="wing kanan" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
-        </div>
         <div class="name script">Agus Irawan</div>
         <div class="parents">Putra dari<br>Bapak Seniran &amp; Ibu Sumini</div>
       </div>
@@ -549,22 +554,22 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       <div class="amp script reveal">&amp;</div>
 
       <div class="person reveal">
-        <div class="photo-row">
-          <img class="wing kiri" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
-          <div class="photo gebyok">
+        <div class="photo gebyok">
             <picture>
               <source srcset="foto/wanita.webp" type="image/webp">
               <img src="foto/wanita.jpg" alt="Indah Khoirun Nisa'" loading="lazy" decoding="async" width="800" height="1200">
             </picture>
             <span class="gebyok-outline"></span>
           </div>
-          <img class="wing kanan" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
-        </div>
         <div class="name script">Indah Khoirun Nisa'</div>
         <div class="parents">Putri dari<br>Bapak Kemin &amp; Ibu Siti Umaiyah</div>
       </div>
     </div>
   </section>
+
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  </svg>
 
   <!-- ================= COUNTDOWN ================= -->
   <section id="countdown-wrap" class="center">
@@ -583,6 +588,10 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       </a>
     </div>
   </section>
+
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  </svg>
 
   <!-- ================= ACARA (urut kronologis) ================= -->
   <section id="event" class="truntum">
@@ -622,6 +631,10 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  </svg>
+
   <!-- ================= GALERI ================= -->
   <section id="gallery-wrap">
     <div class="subtitle reveal">Momen Bahagia</div>
@@ -654,6 +667,10 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  </svg>
+
   <!-- ================= HADIAH ================= -->
   <section id="gift" class="truntum">
     <div class="subtitle reveal">Tanda Kasih</div>
@@ -678,8 +695,12 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     </div>
   </section>
 
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#FAF6EF">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#F1E9DC"/>
+  </svg>
+
   <!-- ================= UCAPAN ================= -->
-  <section id="wishes" style="background:var(--cream-2)">
+  <section id="wishes">
     <div class="subtitle reveal">Kirim Doa</div>
     <h2 class="title script reveal">Ucapan &amp; Doa Restu</h2>
     <form class="wish reveal" id="wishForm">
@@ -696,8 +717,12 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <div id="wishList"></div>
   </section>
 
+  <svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" aria-hidden="true" style="background:#F1E9DC">
+    <path d="M0,32 C220,4 480,0 720,10 C960,20 1220,30 1440,12 L1440,32 Z" fill="#FAF6EF"/>
+  </svg>
+
   <!-- ================= PENUTUP ================= -->
-  <section class="center truntum">
+  <section id="closing" class="center truntum">
     <div class="closing-photo gebyok reveal">
       <picture>
         <source srcset="foto/penutup.webp" type="image/webp">
@@ -710,7 +735,9 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
       Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
     </p>
     <div class="divider">
-      <img class="kayon sm" src="foto/gunungan-biru.webp" alt="" aria-hidden="true" decoding="async">
+      <svg width="30" height="20" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M15 17c0-5 3-8 7-9-4-1-7 1-7 4 0-3-3-5-7-4 4 1 7 4 7 9z"/><path d="M15 17v-9"/>
+      </svg>
     </div>
     <h2 class="title script reveal" style="margin-bottom:0">Wassalamu'alaikum Wr. Wb.</h2>
     <p class="reveal" style="color:var(--blue-500)">Kami yang berbahagia,</p>
