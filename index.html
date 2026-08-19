@@ -166,7 +166,7 @@ h2.title.script{font-size:2.7rem;font-weight:600}
   position:fixed;inset:0;z-index:80;
   color:var(--cream);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-  text-align:center;padding:28px 28px 40px;
+  text-align:center;padding:28px 28px 132px;
   transition:opacity .9s ease,visibility .9s;
   background:#1B2635;
 }
@@ -183,6 +183,29 @@ h2.title.script{font-size:2.7rem;font-weight:600}
   background:linear-gradient(180deg,
     rgba(27,38,53,.18) 0%, rgba(27,38,53,.24) 26%,
     rgba(27,38,53,.68) 52%, rgba(27,38,53,.93) 78%, rgba(27,38,53,.97) 100%);
+}
+/* Wayang di dua sudut bawah COVER + tepi lengkung krem.
+   Selector img.wayang (bukan .wayang) supaya tidak kalah spesifisitas.
+   Bergoyang pelan seperti dipegang dalang; ikut mati kalau pengguna
+   memilih "kurangi animasi". */
+#cover .kaki{
+  position:absolute;left:0;right:0;bottom:0;height:88px;z-index:1;pointer-events:none;
+}
+#cover .kaki svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+#cover img.wayang{
+  position:absolute;bottom:34px;z-index:2;pointer-events:none;
+  width:clamp(88px,21vw,178px);height:auto;opacity:.92;
+  transform-origin:50% 100%;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));
+}
+#cover img.wayang.kiri {left:-10px; animation:sway-l 6s ease-in-out infinite alternate}
+#cover img.wayang.kanan{right:-10px;animation:sway-r 6.8s ease-in-out infinite alternate}
+@keyframes sway-l{from{transform:rotate(-2deg)}to{transform:rotate(1.6deg)}}
+@keyframes sway-r{from{transform:rotate(2deg)} to{transform:rotate(-1.6deg)}}
+@media (prefers-reduced-motion: reduce){ #cover img.wayang{animation:none !important} }
+@media (max-width:420px){
+  #cover .kaki{height:64px}
+  #cover img.wayang{bottom:46px;width:clamp(84px,24vw,120px)}
 }
 #cover.hidden{opacity:0;visibility:hidden;pointer-events:none}
 #cover .frame{
@@ -432,6 +455,14 @@ footer .names{font-size:2.5rem;color:var(--gold-l)}
     <div class="to">Kepada Yth. Bapak/Ibu/Saudara/i</div>
     <div class="guest" id="guestName">Tamu Undangan</div>
     <button id="openBtn">✉ &nbsp;Buka Undangan</button>
+  </div>
+
+  <img class="wayang kiri"  src="foto/wayang-kiri.webp"  alt="" aria-hidden="true" decoding="async">
+  <img class="wayang kanan" src="foto/wayang-kanan.webp" alt="" aria-hidden="true" decoding="async">
+  <div class="kaki" aria-hidden="true">
+    <svg viewBox="0 0 1440 88" preserveAspectRatio="none">
+      <path d="M0,88 C260,26 620,2 900,16 C1140,28 1300,54 1440,38 L1440,88 Z" fill="#FAF6EF"/>
+    </svg>
   </div>
 </div>
 
